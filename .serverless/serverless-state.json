@@ -7,12 +7,10 @@
     "provider": {
       "name": "aws",
       "runtime": "nodejs18.x",
-      "lambdaHashingVersion": "20201221",
       "architecture": "arm64",
       "memorySize": 128,
       "timeout": 30,
       "environment": {
-        "AWS_REGION": "us-east-1",
         "DYNAMODB_ENDPOINT": "https://dynamodb.us-east-1.amazonaws.com",
         "DYNAMODB_TABLE_USERS": "dev-users",
         "DYNAMODB_TABLE_PARTICIPANTS": "dev-participants",
@@ -227,9 +225,9 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/serverless-reality-tv-voting/dev/1677944778260-2023-03-04T15:46:18.260Z/serverless-reality-tv-voting.zip"
+                "S3Key": "serverless/serverless-reality-tv-voting/dev/1677955290691-2023-03-04T18:41:30.691Z/serverless-reality-tv-voting.zip"
               },
-              "Handler": "src/lambdas/users/users-create.create",
+              "Handler": "src/lambdas/users/create.handler",
               "Runtime": "nodejs18.x",
               "FunctionName": "serverless-reality-tv-voting-dev-users-create",
               "MemorySize": 128,
@@ -239,7 +237,6 @@
               ],
               "Environment": {
                 "Variables": {
-                  "AWS_REGION": "us-east-1",
                   "DYNAMODB_ENDPOINT": "https://dynamodb.us-east-1.amazonaws.com",
                   "DYNAMODB_TABLE_USERS": "dev-users",
                   "DYNAMODB_TABLE_PARTICIPANTS": "dev-participants",
@@ -260,14 +257,14 @@
               "UsersDashcreateLogGroup"
             ]
           },
-          "UsersDashcreateLambdaVersionjQTj9ZcQzJvniERb78vIxRTwZ9yoiTyDuexUA90brc": {
+          "UsersDashcreateLambdaVersionxRfLRK5QavtfTWhsyS26MhGKYReEFjQ1FopsUazrfI": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "UsersDashcreateLambdaFunction"
               },
-              "CodeSha256": "BmENX+WGB/Fe7aDjkQZQYDwM50eYbB9Vwj6wCwxm5p8="
+              "CodeSha256": "GIqDhQgDfkPOGzkwc9VCov86SF9aP74L/t1WGv2OjQ8="
             }
           },
           "ApiGatewayRestApi": {
@@ -343,7 +340,7 @@
               "UsersDashcreateLambdaPermissionApiGateway"
             ]
           },
-          "ApiGatewayDeployment1677944774442": {
+          "ApiGatewayDeployment1677955286262": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -400,20 +397,12 @@
                 {
                   "AttributeName": "documentNumber",
                   "AttributeType": "S"
-                },
-                {
-                  "AttributeName": "createdAt",
-                  "AttributeType": "N"
                 }
               ],
               "KeySchema": [
                 {
                   "AttributeName": "documentNumber",
                   "KeyType": "HASH"
-                },
-                {
-                  "AttributeName": "createdAt",
-                  "KeyType": "RANGE"
                 }
               ],
               "BillingMode": "PAY_PER_REQUEST",
@@ -428,20 +417,12 @@
                 {
                   "AttributeName": "code",
                   "AttributeType": "S"
-                },
-                {
-                  "AttributeName": "createdAt",
-                  "AttributeType": "N"
                 }
               ],
               "KeySchema": [
                 {
                   "AttributeName": "code",
                   "KeyType": "HASH"
-                },
-                {
-                  "AttributeName": "createdAt",
-                  "KeyType": "RANGE"
                 }
               ],
               "BillingMode": "PAY_PER_REQUEST",
@@ -461,7 +442,7 @@
           "UsersDashcreateLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "UsersDashcreateLambdaVersionjQTj9ZcQzJvniERb78vIxRTwZ9yoiTyDuexUA90brc"
+              "Ref": "UsersDashcreateLambdaVersionxRfLRK5QavtfTWhsyS26MhGKYReEFjQ1FopsUazrfI"
             },
             "Export": {
               "Name": "sls-serverless-reality-tv-voting-dev-UsersDashcreateLambdaFunctionQualifiedArn"
@@ -590,7 +571,7 @@
     "pluginsData": {},
     "functions": {
       "users-create": {
-        "handler": "src/lambdas/users/users-create.create",
+        "handler": "src/lambdas/users/create.handler",
         "lambdaInsights": true,
         "events": [
           {
@@ -610,7 +591,7 @@
         "timeout": 30,
         "runtime": "nodejs18.x",
         "vpc": {},
-        "versionLogicalId": "UsersDashcreateLambdaVersionjQTj9ZcQzJvniERb78vIxRTwZ9yoiTyDuexUA90brc"
+        "versionLogicalId": "UsersDashcreateLambdaVersionxRfLRK5QavtfTWhsyS26MhGKYReEFjQ1FopsUazrfI"
       }
     },
     "resources": {
@@ -623,20 +604,12 @@
               {
                 "AttributeName": "documentNumber",
                 "AttributeType": "S"
-              },
-              {
-                "AttributeName": "createdAt",
-                "AttributeType": "N"
               }
             ],
             "KeySchema": [
               {
                 "AttributeName": "documentNumber",
                 "KeyType": "HASH"
-              },
-              {
-                "AttributeName": "createdAt",
-                "KeyType": "RANGE"
               }
             ],
             "BillingMode": "PAY_PER_REQUEST",
@@ -651,20 +624,12 @@
               {
                 "AttributeName": "code",
                 "AttributeType": "S"
-              },
-              {
-                "AttributeName": "createdAt",
-                "AttributeType": "N"
               }
             ],
             "KeySchema": [
               {
                 "AttributeName": "code",
                 "KeyType": "HASH"
-              },
-              {
-                "AttributeName": "createdAt",
-                "KeyType": "RANGE"
               }
             ],
             "BillingMode": "PAY_PER_REQUEST",
@@ -697,7 +662,7 @@
     "artifact": "/Users/Luciano.Junior/Projects/tcc/serverless-reality-tv-voting/.serverless/serverless-reality-tv-voting.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/serverless-reality-tv-voting/dev/1677944778260-2023-03-04T15:46:18.260Z",
+    "artifactDirectoryName": "serverless/serverless-reality-tv-voting/dev/1677955290691-2023-03-04T18:41:30.691Z",
     "artifact": "serverless-reality-tv-voting.zip"
   }
 }

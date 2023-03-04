@@ -9,12 +9,10 @@ plugins:
 provider:
   name: aws
   runtime: nodejs18.x
-  lambdaHashingVersion: '20201221'
   architecture: arm64
   memorySize: 128
   timeout: 30
   environment:
-    AWS_REGION: us-east-1
     DYNAMODB_ENDPOINT: https://dynamodb.us-east-1.amazonaws.com
     DYNAMODB_TABLE_USERS: ${sls:stage}-users
     DYNAMODB_TABLE_PARTICIPANTS: ${sls:stage}-participants
@@ -45,12 +43,36 @@ provider:
 
 functions:
   users-create:
-    handler: src/lambdas/users/users-create.create
+    handler: src/lambdas/users/create.handler
     lambdaInsights: true
     events:
       - http:
           path: /users
           method: post
+
+  users-update:
+    handler: src/lambdas/users/update.handler
+    lambdaInsights: true
+    events:
+      - http:
+          path: /users/{documentNumber}
+          method: put
+
+  users-get:
+    handler: src/lambdas/users/get.handler
+    lambdaInsights: true
+    events:
+      - http:
+          path: /users/{documentNumber}
+          method: get
+
+  users-delete:
+    handler: src/lambdas/users/delete.handler
+    lambdaInsights: true
+    events:
+      - http:
+          path: /users/{documentNumber}
+          method: delete
 
 resources:
   Resources:
@@ -62,16 +84,10 @@ resources:
           -
             AttributeName: documentNumber
             AttributeType: S
-          -
-            AttributeName: createdAt
-            AttributeType: N
         KeySchema:
           -
             AttributeName: documentNumber
             KeyType: HASH
-          -
-            AttributeName: createdAt
-            KeyType: RANGE
         BillingMode: PAY_PER_REQUEST
         TableName: ${self:provider.environment.DYNAMODB_TABLE_USERS}
 
@@ -83,15 +99,9 @@ resources:
           -
             AttributeName: code
             AttributeType: S
-          -
-            AttributeName: createdAt
-            AttributeType: N
         KeySchema:
           -
             AttributeName: code
             KeyType: HASH
-          -
-            AttributeName: createdAt
-            KeyType: RANGE
         BillingMode: PAY_PER_REQUEST
         TableName: ${self:provider.environment.DYNAMODB_TABLE_PARTICIPANTS}
