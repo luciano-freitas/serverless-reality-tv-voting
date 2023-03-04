@@ -42,6 +42,15 @@ const UsersUseCase = {
 
   delete(keys) {
     return UserRepository.delete(keys);
+  },
+
+  async list(filters) {
+    const result = await UserRepository.list(filters);
+    return {
+      items: result.Items,
+      count: result.Count,
+      ...result?.LastEvaluatedKey ? { lastKey: JSON.stringify(result.LastEvaluatedKey) } : {}
+    };
   }
 }
 

@@ -27,6 +27,15 @@ const CoreRepository = {
     return Ddb.ddbClient.get(params).promise().then(({ Item }) => Item);
   },
 
+  list(table, structure) {
+    const params = {
+      ...structure,
+      TableName: table,
+    };
+
+    return Ddb.ddbClient.scan(params).promise();
+  },
+
   delete(table, keys) {
     const params = {
       TableName: table,

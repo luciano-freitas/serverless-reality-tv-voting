@@ -74,6 +74,14 @@ functions:
           path: /users/{documentNumber}
           method: delete
 
+  users-list:
+    handler: src/lambdas/users/list.handler
+    lambdaInsights: true
+    events:
+      - http:
+          path: /users
+          method: get
+
 resources:
   Resources:
     UsersDynamoDbTable:

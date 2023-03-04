@@ -77,6 +77,24 @@
         "LogGroupName": "/aws/lambda/serverless-reality-tv-voting-dev-users-create"
       }
     },
+    "UsersDashupdateLogGroup": {
+      "Type": "AWS::Logs::LogGroup",
+      "Properties": {
+        "LogGroupName": "/aws/lambda/serverless-reality-tv-voting-dev-users-update"
+      }
+    },
+    "UsersDashgetLogGroup": {
+      "Type": "AWS::Logs::LogGroup",
+      "Properties": {
+        "LogGroupName": "/aws/lambda/serverless-reality-tv-voting-dev-users-get"
+      }
+    },
+    "UsersDashdeleteLogGroup": {
+      "Type": "AWS::Logs::LogGroup",
+      "Properties": {
+        "LogGroupName": "/aws/lambda/serverless-reality-tv-voting-dev-users-delete"
+      }
+    },
     "IamRoleLambdaExecution": {
       "Type": "AWS::IAM::Role",
       "Properties": {
@@ -189,7 +207,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/serverless-reality-tv-voting/dev/1677955290691-2023-03-04T18:41:30.691Z/serverless-reality-tv-voting.zip"
+          "S3Key": "serverless/serverless-reality-tv-voting/dev/1677958134746-2023-03-04T19:28:54.746Z/serverless-reality-tv-voting.zip"
         },
         "Handler": "src/lambdas/users/create.handler",
         "Runtime": "nodejs18.x",
@@ -221,14 +239,161 @@
         "UsersDashcreateLogGroup"
       ]
     },
-    "UsersDashcreateLambdaVersionxRfLRK5QavtfTWhsyS26MhGKYReEFjQ1FopsUazrfI": {
+    "UsersDashupdateLambdaFunction": {
+      "Type": "AWS::Lambda::Function",
+      "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Ref": "ServerlessDeploymentBucket"
+          },
+          "S3Key": "serverless/serverless-reality-tv-voting/dev/1677958134746-2023-03-04T19:28:54.746Z/serverless-reality-tv-voting.zip"
+        },
+        "Handler": "src/lambdas/users/update.handler",
+        "Runtime": "nodejs18.x",
+        "FunctionName": "serverless-reality-tv-voting-dev-users-update",
+        "MemorySize": 128,
+        "Timeout": 30,
+        "Architectures": [
+          "arm64"
+        ],
+        "Environment": {
+          "Variables": {
+            "DYNAMODB_ENDPOINT": "https://dynamodb.us-east-1.amazonaws.com",
+            "DYNAMODB_TABLE_USERS": "dev-users",
+            "DYNAMODB_TABLE_PARTICIPANTS": "dev-participants",
+            "API_ZIPCODE_VIACEP_ENDPOINT": "https://viacep.com.br/ws"
+          }
+        },
+        "Role": {
+          "Fn::GetAtt": [
+            "IamRoleLambdaExecution",
+            "Arn"
+          ]
+        },
+        "Layers": [
+          "arn:aws:lambda:us-east-1:580247275435:layer:LambdaInsightsExtension-Arm64:2"
+        ]
+      },
+      "DependsOn": [
+        "UsersDashupdateLogGroup"
+      ]
+    },
+    "UsersDashgetLambdaFunction": {
+      "Type": "AWS::Lambda::Function",
+      "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Ref": "ServerlessDeploymentBucket"
+          },
+          "S3Key": "serverless/serverless-reality-tv-voting/dev/1677958134746-2023-03-04T19:28:54.746Z/serverless-reality-tv-voting.zip"
+        },
+        "Handler": "src/lambdas/users/get.handler",
+        "Runtime": "nodejs18.x",
+        "FunctionName": "serverless-reality-tv-voting-dev-users-get",
+        "MemorySize": 128,
+        "Timeout": 30,
+        "Architectures": [
+          "arm64"
+        ],
+        "Environment": {
+          "Variables": {
+            "DYNAMODB_ENDPOINT": "https://dynamodb.us-east-1.amazonaws.com",
+            "DYNAMODB_TABLE_USERS": "dev-users",
+            "DYNAMODB_TABLE_PARTICIPANTS": "dev-participants",
+            "API_ZIPCODE_VIACEP_ENDPOINT": "https://viacep.com.br/ws"
+          }
+        },
+        "Role": {
+          "Fn::GetAtt": [
+            "IamRoleLambdaExecution",
+            "Arn"
+          ]
+        },
+        "Layers": [
+          "arn:aws:lambda:us-east-1:580247275435:layer:LambdaInsightsExtension-Arm64:2"
+        ]
+      },
+      "DependsOn": [
+        "UsersDashgetLogGroup"
+      ]
+    },
+    "UsersDashdeleteLambdaFunction": {
+      "Type": "AWS::Lambda::Function",
+      "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Ref": "ServerlessDeploymentBucket"
+          },
+          "S3Key": "serverless/serverless-reality-tv-voting/dev/1677958134746-2023-03-04T19:28:54.746Z/serverless-reality-tv-voting.zip"
+        },
+        "Handler": "src/lambdas/users/delete.handler",
+        "Runtime": "nodejs18.x",
+        "FunctionName": "serverless-reality-tv-voting-dev-users-delete",
+        "MemorySize": 128,
+        "Timeout": 30,
+        "Architectures": [
+          "arm64"
+        ],
+        "Environment": {
+          "Variables": {
+            "DYNAMODB_ENDPOINT": "https://dynamodb.us-east-1.amazonaws.com",
+            "DYNAMODB_TABLE_USERS": "dev-users",
+            "DYNAMODB_TABLE_PARTICIPANTS": "dev-participants",
+            "API_ZIPCODE_VIACEP_ENDPOINT": "https://viacep.com.br/ws"
+          }
+        },
+        "Role": {
+          "Fn::GetAtt": [
+            "IamRoleLambdaExecution",
+            "Arn"
+          ]
+        },
+        "Layers": [
+          "arn:aws:lambda:us-east-1:580247275435:layer:LambdaInsightsExtension-Arm64:2"
+        ]
+      },
+      "DependsOn": [
+        "UsersDashdeleteLogGroup"
+      ]
+    },
+    "UsersDashcreateLambdaVersionInDGxcGYkbI0nTdgzlo6iKc5jcCSDDvpWcjAR6Cqk": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "UsersDashcreateLambdaFunction"
         },
-        "CodeSha256": "GIqDhQgDfkPOGzkwc9VCov86SF9aP74L/t1WGv2OjQ8="
+        "CodeSha256": "KDUZ1qsbPcaF4N/rBII7u4Sy7iBy9EsJAu9kPqFC2f0="
+      }
+    },
+    "UsersDashupdateLambdaVersioneAuQ7Qv2rk8yQpdnT8qEW2vgXqcFXfMzMO95Dm8": {
+      "Type": "AWS::Lambda::Version",
+      "DeletionPolicy": "Retain",
+      "Properties": {
+        "FunctionName": {
+          "Ref": "UsersDashupdateLambdaFunction"
+        },
+        "CodeSha256": "KDUZ1qsbPcaF4N/rBII7u4Sy7iBy9EsJAu9kPqFC2f0="
+      }
+    },
+    "UsersDashgetLambdaVersionyQUJ8DiOBS94Gv2dqkiaS262URbf6i7ChEuT9IvGyNs": {
+      "Type": "AWS::Lambda::Version",
+      "DeletionPolicy": "Retain",
+      "Properties": {
+        "FunctionName": {
+          "Ref": "UsersDashgetLambdaFunction"
+        },
+        "CodeSha256": "KDUZ1qsbPcaF4N/rBII7u4Sy7iBy9EsJAu9kPqFC2f0="
+      }
+    },
+    "UsersDashdeleteLambdaVersion5RmMb4VzOchIaXIswdgIwBjzOOLiVrJ7bPXdjneEvI": {
+      "Type": "AWS::Lambda::Version",
+      "DeletionPolicy": "Retain",
+      "Properties": {
+        "FunctionName": {
+          "Ref": "UsersDashdeleteLambdaFunction"
+        },
+        "CodeSha256": "KDUZ1qsbPcaF4N/rBII7u4Sy7iBy9EsJAu9kPqFC2f0="
       }
     },
     "ApiGatewayRestApi": {
@@ -253,6 +418,18 @@
           ]
         },
         "PathPart": "users",
+        "RestApiId": {
+          "Ref": "ApiGatewayRestApi"
+        }
+      }
+    },
+    "ApiGatewayResourceUsersDocumentnumberVar": {
+      "Type": "AWS::ApiGateway::Resource",
+      "Properties": {
+        "ParentId": {
+          "Ref": "ApiGatewayResourceUsers"
+        },
+        "PathPart": "{documentNumber}",
         "RestApiId": {
           "Ref": "ApiGatewayRestApi"
         }
@@ -304,7 +481,145 @@
         "UsersDashcreateLambdaPermissionApiGateway"
       ]
     },
-    "ApiGatewayDeployment1677955286262": {
+    "ApiGatewayMethodUsersDocumentnumberVarPut": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "HttpMethod": "PUT",
+        "RequestParameters": {},
+        "ResourceId": {
+          "Ref": "ApiGatewayResourceUsersDocumentnumberVar"
+        },
+        "RestApiId": {
+          "Ref": "ApiGatewayRestApi"
+        },
+        "ApiKeyRequired": false,
+        "AuthorizationType": "NONE",
+        "Integration": {
+          "IntegrationHttpMethod": "POST",
+          "Type": "AWS_PROXY",
+          "Uri": {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition"
+                },
+                ":apigateway:",
+                {
+                  "Ref": "AWS::Region"
+                },
+                ":lambda:path/2015-03-31/functions/",
+                {
+                  "Fn::GetAtt": [
+                    "UsersDashupdateLambdaFunction",
+                    "Arn"
+                  ]
+                },
+                "/invocations"
+              ]
+            ]
+          }
+        },
+        "MethodResponses": []
+      },
+      "DependsOn": [
+        "UsersDashupdateLambdaPermissionApiGateway"
+      ]
+    },
+    "ApiGatewayMethodUsersDocumentnumberVarGet": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "HttpMethod": "GET",
+        "RequestParameters": {},
+        "ResourceId": {
+          "Ref": "ApiGatewayResourceUsersDocumentnumberVar"
+        },
+        "RestApiId": {
+          "Ref": "ApiGatewayRestApi"
+        },
+        "ApiKeyRequired": false,
+        "AuthorizationType": "NONE",
+        "Integration": {
+          "IntegrationHttpMethod": "POST",
+          "Type": "AWS_PROXY",
+          "Uri": {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition"
+                },
+                ":apigateway:",
+                {
+                  "Ref": "AWS::Region"
+                },
+                ":lambda:path/2015-03-31/functions/",
+                {
+                  "Fn::GetAtt": [
+                    "UsersDashgetLambdaFunction",
+                    "Arn"
+                  ]
+                },
+                "/invocations"
+              ]
+            ]
+          }
+        },
+        "MethodResponses": []
+      },
+      "DependsOn": [
+        "UsersDashgetLambdaPermissionApiGateway"
+      ]
+    },
+    "ApiGatewayMethodUsersDocumentnumberVarDelete": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "HttpMethod": "DELETE",
+        "RequestParameters": {},
+        "ResourceId": {
+          "Ref": "ApiGatewayResourceUsersDocumentnumberVar"
+        },
+        "RestApiId": {
+          "Ref": "ApiGatewayRestApi"
+        },
+        "ApiKeyRequired": false,
+        "AuthorizationType": "NONE",
+        "Integration": {
+          "IntegrationHttpMethod": "POST",
+          "Type": "AWS_PROXY",
+          "Uri": {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition"
+                },
+                ":apigateway:",
+                {
+                  "Ref": "AWS::Region"
+                },
+                ":lambda:path/2015-03-31/functions/",
+                {
+                  "Fn::GetAtt": [
+                    "UsersDashdeleteLambdaFunction",
+                    "Arn"
+                  ]
+                },
+                "/invocations"
+              ]
+            ]
+          }
+        },
+        "MethodResponses": []
+      },
+      "DependsOn": [
+        "UsersDashdeleteLambdaPermissionApiGateway"
+      ]
+    },
+    "ApiGatewayDeployment1677958130017": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -313,7 +628,10 @@
         "StageName": "dev"
       },
       "DependsOn": [
-        "ApiGatewayMethodUsersPost"
+        "ApiGatewayMethodUsersPost",
+        "ApiGatewayMethodUsersDocumentnumberVarPut",
+        "ApiGatewayMethodUsersDocumentnumberVarGet",
+        "ApiGatewayMethodUsersDocumentnumberVarDelete"
       ]
     },
     "UsersDashcreateLambdaPermissionApiGateway": {
@@ -322,6 +640,117 @@
         "FunctionName": {
           "Fn::GetAtt": [
             "UsersDashcreateLambdaFunction",
+            "Arn"
+          ]
+        },
+        "Action": "lambda:InvokeFunction",
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition"
+              },
+              ":execute-api:",
+              {
+                "Ref": "AWS::Region"
+              },
+              ":",
+              {
+                "Ref": "AWS::AccountId"
+              },
+              ":",
+              {
+                "Ref": "ApiGatewayRestApi"
+              },
+              "/*/*"
+            ]
+          ]
+        }
+      }
+    },
+    "UsersDashupdateLambdaPermissionApiGateway": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "UsersDashupdateLambdaFunction",
+            "Arn"
+          ]
+        },
+        "Action": "lambda:InvokeFunction",
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition"
+              },
+              ":execute-api:",
+              {
+                "Ref": "AWS::Region"
+              },
+              ":",
+              {
+                "Ref": "AWS::AccountId"
+              },
+              ":",
+              {
+                "Ref": "ApiGatewayRestApi"
+              },
+              "/*/*"
+            ]
+          ]
+        }
+      }
+    },
+    "UsersDashgetLambdaPermissionApiGateway": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "UsersDashgetLambdaFunction",
+            "Arn"
+          ]
+        },
+        "Action": "lambda:InvokeFunction",
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition"
+              },
+              ":execute-api:",
+              {
+                "Ref": "AWS::Region"
+              },
+              ":",
+              {
+                "Ref": "AWS::AccountId"
+              },
+              ":",
+              {
+                "Ref": "ApiGatewayRestApi"
+              },
+              "/*/*"
+            ]
+          ]
+        }
+      }
+    },
+    "UsersDashdeleteLambdaPermissionApiGateway": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "UsersDashdeleteLambdaFunction",
             "Arn"
           ]
         },
@@ -406,10 +835,37 @@
     "UsersDashcreateLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "UsersDashcreateLambdaVersionxRfLRK5QavtfTWhsyS26MhGKYReEFjQ1FopsUazrfI"
+        "Ref": "UsersDashcreateLambdaVersionInDGxcGYkbI0nTdgzlo6iKc5jcCSDDvpWcjAR6Cqk"
       },
       "Export": {
         "Name": "sls-serverless-reality-tv-voting-dev-UsersDashcreateLambdaFunctionQualifiedArn"
+      }
+    },
+    "UsersDashupdateLambdaFunctionQualifiedArn": {
+      "Description": "Current Lambda function version",
+      "Value": {
+        "Ref": "UsersDashupdateLambdaVersioneAuQ7Qv2rk8yQpdnT8qEW2vgXqcFXfMzMO95Dm8"
+      },
+      "Export": {
+        "Name": "sls-serverless-reality-tv-voting-dev-UsersDashupdateLambdaFunctionQualifiedArn"
+      }
+    },
+    "UsersDashgetLambdaFunctionQualifiedArn": {
+      "Description": "Current Lambda function version",
+      "Value": {
+        "Ref": "UsersDashgetLambdaVersionyQUJ8DiOBS94Gv2dqkiaS262URbf6i7ChEuT9IvGyNs"
+      },
+      "Export": {
+        "Name": "sls-serverless-reality-tv-voting-dev-UsersDashgetLambdaFunctionQualifiedArn"
+      }
+    },
+    "UsersDashdeleteLambdaFunctionQualifiedArn": {
+      "Description": "Current Lambda function version",
+      "Value": {
+        "Ref": "UsersDashdeleteLambdaVersion5RmMb4VzOchIaXIswdgIwBjzOOLiVrJ7bPXdjneEvI"
+      },
+      "Export": {
+        "Name": "sls-serverless-reality-tv-voting-dev-UsersDashdeleteLambdaFunctionQualifiedArn"
       }
     },
     "ServiceEndpoint": {

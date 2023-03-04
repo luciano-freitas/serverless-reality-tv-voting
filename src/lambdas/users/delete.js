@@ -4,14 +4,13 @@ const { ResponseHttp } = require('../../utils');
 const { UsersUseCase } = require('../../use-case');
 
 module.exports.handler = async (event, context, callback) => {
-  const { documentNumber } = event.pathParameters;
-
-  if (!documentNumber) {
+  if (!event?.pathParameters) {
     return ResponseHttp.reply({
-      message: 'Params [documentNumber] is required',
+      message: 'Params [pathParameters] is required',
     }, 400)
   }
 
+  const { documentNumber } = event.pathParameters;
   const result = await UsersUseCase.delete({ documentNumber });
   return ResponseHttp.reply(result);
 };
