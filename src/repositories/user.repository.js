@@ -44,7 +44,7 @@ const UserRepository = {
     return CoreRepository.update(TABLE, structure);
   },
 
-  async updateParticipant(keys, item) {
+  updateParticipant(keys, item) {
     const structure = {
       Key: {
         documentNumber: keys.documentNumber,

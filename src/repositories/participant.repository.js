@@ -62,7 +62,7 @@ const ParticipantRepository = {
       ReturnValues: 'ALL_NEW'
     }
     const result = (await Ddb.ddb.updateItem(structure).promise()).Attributes;
-    return Promise.resolve(Ddb.unmarshall(result));
+    return Ddb.unmarshall(result);
   }
 
 }

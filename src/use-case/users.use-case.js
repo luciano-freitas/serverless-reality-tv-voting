@@ -60,7 +60,7 @@ const UsersUseCase = {
     if (userBefore?.participant === participant)
       return { statusCode: 400, message: 'User already voted in this participant' };
 
-    const [userUpdated, participantUpdated] = await (async () => {
+    const [userUpdated, participantUpdated] = await (() => {
       if (userBefore?.participant && userBefore?.participant != participant)
         return Promise.all([
           UserRepository.updateParticipant({ documentNumber }, { participant }),
