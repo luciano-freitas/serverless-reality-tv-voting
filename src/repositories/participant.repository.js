@@ -1,5 +1,6 @@
+const { Ddb } = require('../configs');
 const CoreRepository = require('./core.repository');
-const TABLE = process.env.DYNAMODB_TABLE_PARTICIPANT;
+const TABLE = process.env.DYNAMODB_TABLE_PARTICIPANTS;
 
 const ParticipantRepository = {
 
@@ -26,7 +27,7 @@ const ParticipantRepository = {
   update(keys, item) {
     const structure = {
       Key: {
-        documentNumber: keys.documentNumber,
+        code: keys.code,
       },
       ExpressionAttributeNames: {
         '#name': 'name',
@@ -40,6 +41,28 @@ const ParticipantRepository = {
     }
 
     return CoreRepository.update(TABLE, structure);
+  },
+
+  /**
+   * @summary increase and remove votes of participants
+   * @param type "+" OR "-"
+   */
+  async votes(keys, type) {
+    const structure = {
+      TableName: TABLE,
+      Key: {
+        "code": {
+          "S": keys.code
+        }
+      },
+      ExpressionAttributeValues: {
+        ":value": { N: "1" },
+      },
+      UpdateExpression: `SET votes = votes ${type} :value`,
+      ReturnValues: 'ALL_NEW'
+    }
+    const result = (await Ddb.ddb.updateItem(structure).promise()).Attributes;
+    return Promise.resolve(Ddb.unmarshall(result));
   }
 
 }

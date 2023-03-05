@@ -1,5 +1,5 @@
 const { ViaCepIntegration } = require('../integrations');
-const { UserRepository } = require('../repositories');
+const { UserRepository, ParticipantRepository } = require('../repositories');
 
 const UsersUseCase = {
 
@@ -51,6 +51,34 @@ const UsersUseCase = {
       count: result.Count,
       ...result?.LastEvaluatedKey ? { lastKey: JSON.stringify(result.LastEvaluatedKey) } : {}
     };
+  },
+
+  async votes(keys) {
+    const { documentNumber, participant } = keys;
+    const userBefore = await UserRepository.get({ documentNumber });
+
+    if (userBefore?.participant === participant)
+      return { statusCode: 400, message: 'User already voted in this participant' };
+
+    const [userUpdated, participantUpdated] = await (async () => {
+      if (userBefore?.participant && userBefore?.participant != participant)
+        return Promise.all([
+          UserRepository.updateParticipant({ documentNumber }, { participant }),
+          ParticipantRepository.votes({ code: participant }, '+'),
+          ParticipantRepository.votes({ code: userBefore.participant }, '-')
+        ]);
+
+      return Promise.all([
+        UserRepository.updateParticipant({ documentNumber }, { participant }),
+        ParticipantRepository.votes({ code: participant }, '+'),
+      ]);
+    })();
+
+    return {
+      ...userUpdated,
+      totalVotesYouParticipant: participantUpdated.votes
+    };
+
   }
 }
 

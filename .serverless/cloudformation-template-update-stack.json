@@ -131,6 +131,12 @@
         "LogGroupName": "/aws/lambda/serverless-reality-tv-voting-dev-participants-list"
       }
     },
+    "ParticipantsDashvoteLogGroup": {
+      "Type": "AWS::Logs::LogGroup",
+      "Properties": {
+        "LogGroupName": "/aws/lambda/serverless-reality-tv-voting-dev-participants-vote"
+      }
+    },
     "IamRoleLambdaExecution": {
       "Type": "AWS::IAM::Role",
       "Properties": {
@@ -243,7 +249,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/serverless-reality-tv-voting/dev/1678026670856-2023-03-05T14:31:10.856Z/serverless-reality-tv-voting.zip"
+          "S3Key": "serverless/serverless-reality-tv-voting/dev/1678032073216-2023-03-05T16:01:13.216Z/serverless-reality-tv-voting.zip"
         },
         "Handler": "src/lambdas/users/create.handler",
         "Runtime": "nodejs18.x",
@@ -282,7 +288,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/serverless-reality-tv-voting/dev/1678026670856-2023-03-05T14:31:10.856Z/serverless-reality-tv-voting.zip"
+          "S3Key": "serverless/serverless-reality-tv-voting/dev/1678032073216-2023-03-05T16:01:13.216Z/serverless-reality-tv-voting.zip"
         },
         "Handler": "src/lambdas/users/update.handler",
         "Runtime": "nodejs18.x",
@@ -321,7 +327,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/serverless-reality-tv-voting/dev/1678026670856-2023-03-05T14:31:10.856Z/serverless-reality-tv-voting.zip"
+          "S3Key": "serverless/serverless-reality-tv-voting/dev/1678032073216-2023-03-05T16:01:13.216Z/serverless-reality-tv-voting.zip"
         },
         "Handler": "src/lambdas/users/get.handler",
         "Runtime": "nodejs18.x",
@@ -360,7 +366,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/serverless-reality-tv-voting/dev/1678026670856-2023-03-05T14:31:10.856Z/serverless-reality-tv-voting.zip"
+          "S3Key": "serverless/serverless-reality-tv-voting/dev/1678032073216-2023-03-05T16:01:13.216Z/serverless-reality-tv-voting.zip"
         },
         "Handler": "src/lambdas/users/delete.handler",
         "Runtime": "nodejs18.x",
@@ -399,7 +405,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/serverless-reality-tv-voting/dev/1678026670856-2023-03-05T14:31:10.856Z/serverless-reality-tv-voting.zip"
+          "S3Key": "serverless/serverless-reality-tv-voting/dev/1678032073216-2023-03-05T16:01:13.216Z/serverless-reality-tv-voting.zip"
         },
         "Handler": "src/lambdas/users/list.handler",
         "Runtime": "nodejs18.x",
@@ -438,7 +444,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/serverless-reality-tv-voting/dev/1678026670856-2023-03-05T14:31:10.856Z/serverless-reality-tv-voting.zip"
+          "S3Key": "serverless/serverless-reality-tv-voting/dev/1678032073216-2023-03-05T16:01:13.216Z/serverless-reality-tv-voting.zip"
         },
         "Handler": "src/lambdas/participants/create.handler",
         "Runtime": "nodejs18.x",
@@ -477,7 +483,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/serverless-reality-tv-voting/dev/1678026670856-2023-03-05T14:31:10.856Z/serverless-reality-tv-voting.zip"
+          "S3Key": "serverless/serverless-reality-tv-voting/dev/1678032073216-2023-03-05T16:01:13.216Z/serverless-reality-tv-voting.zip"
         },
         "Handler": "src/lambdas/participants/update.handler",
         "Runtime": "nodejs18.x",
@@ -516,7 +522,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/serverless-reality-tv-voting/dev/1678026670856-2023-03-05T14:31:10.856Z/serverless-reality-tv-voting.zip"
+          "S3Key": "serverless/serverless-reality-tv-voting/dev/1678032073216-2023-03-05T16:01:13.216Z/serverless-reality-tv-voting.zip"
         },
         "Handler": "src/lambdas/participants/get.handler",
         "Runtime": "nodejs18.x",
@@ -555,7 +561,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/serverless-reality-tv-voting/dev/1678026670856-2023-03-05T14:31:10.856Z/serverless-reality-tv-voting.zip"
+          "S3Key": "serverless/serverless-reality-tv-voting/dev/1678032073216-2023-03-05T16:01:13.216Z/serverless-reality-tv-voting.zip"
         },
         "Handler": "src/lambdas/participants/delete.handler",
         "Runtime": "nodejs18.x",
@@ -594,7 +600,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/serverless-reality-tv-voting/dev/1678026670856-2023-03-05T14:31:10.856Z/serverless-reality-tv-voting.zip"
+          "S3Key": "serverless/serverless-reality-tv-voting/dev/1678032073216-2023-03-05T16:01:13.216Z/serverless-reality-tv-voting.zip"
         },
         "Handler": "src/lambdas/participants/list.handler",
         "Runtime": "nodejs18.x",
@@ -626,104 +632,153 @@
         "ParticipantsDashlistLogGroup"
       ]
     },
-    "UsersDashcreateLambdaVersionfNPSiRaU5H6UWblxWTA9ztW44Dghe8O9ggUYId6y6I": {
+    "ParticipantsDashvoteLambdaFunction": {
+      "Type": "AWS::Lambda::Function",
+      "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Ref": "ServerlessDeploymentBucket"
+          },
+          "S3Key": "serverless/serverless-reality-tv-voting/dev/1678032073216-2023-03-05T16:01:13.216Z/serverless-reality-tv-voting.zip"
+        },
+        "Handler": "src/lambdas/participants/vote.handler",
+        "Runtime": "nodejs18.x",
+        "FunctionName": "serverless-reality-tv-voting-dev-participants-vote",
+        "MemorySize": 128,
+        "Timeout": 30,
+        "Architectures": [
+          "arm64"
+        ],
+        "Environment": {
+          "Variables": {
+            "DYNAMODB_ENDPOINT": "https://dynamodb.us-east-1.amazonaws.com",
+            "DYNAMODB_TABLE_USERS": "dev-users",
+            "DYNAMODB_TABLE_PARTICIPANTS": "dev-participants",
+            "API_ZIPCODE_VIACEP_ENDPOINT": "https://viacep.com.br/ws"
+          }
+        },
+        "Role": {
+          "Fn::GetAtt": [
+            "IamRoleLambdaExecution",
+            "Arn"
+          ]
+        },
+        "Layers": [
+          "arn:aws:lambda:us-east-1:580247275435:layer:LambdaInsightsExtension-Arm64:2"
+        ]
+      },
+      "DependsOn": [
+        "ParticipantsDashvoteLogGroup"
+      ]
+    },
+    "UsersDashcreateLambdaVersionLbtNq1pik6AZRJCg5EGjTF0zVNssy4VE27aJKxl2k": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "UsersDashcreateLambdaFunction"
         },
-        "CodeSha256": "vEbeiWBq12voWdkmIIBnInGavH41ljwfBZgbm0VZfHM="
+        "CodeSha256": "sTyuibJrg4Yf55FyIoHt09BloKURc/VGUAz1PA3qjFs="
       }
     },
-    "UsersDashupdateLambdaVersionX4DDC0LrfqHtLxkHMcljPsmdOip7NVlNhA16aPjDqFM": {
+    "UsersDashupdateLambdaVersionmbOEYBRjFhVWjzzz1FI9kyb7rKvArYuPnjH3YrnA4": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "UsersDashupdateLambdaFunction"
         },
-        "CodeSha256": "vEbeiWBq12voWdkmIIBnInGavH41ljwfBZgbm0VZfHM="
+        "CodeSha256": "sTyuibJrg4Yf55FyIoHt09BloKURc/VGUAz1PA3qjFs="
       }
     },
-    "UsersDashgetLambdaVersionG1oYTDGaeWzNX0rT6bwDggVt9lxMGLp4a0jH19gMqsA": {
+    "UsersDashgetLambdaVersion6eXdV2eAu1MVQjDt9TDpnhkYZYMcKxhtwhq6r2FIhc": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "UsersDashgetLambdaFunction"
         },
-        "CodeSha256": "vEbeiWBq12voWdkmIIBnInGavH41ljwfBZgbm0VZfHM="
+        "CodeSha256": "sTyuibJrg4Yf55FyIoHt09BloKURc/VGUAz1PA3qjFs="
       }
     },
-    "UsersDashdeleteLambdaVersionWTtWsnooPcyR3cSVPnabQTwqErLOi9gwYHuP2c1Yg": {
+    "UsersDashdeleteLambdaVersionRvci3tnQju0sVHOtIGR6Dw4G8P7iASGgy2xGIYGFpwY": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "UsersDashdeleteLambdaFunction"
         },
-        "CodeSha256": "vEbeiWBq12voWdkmIIBnInGavH41ljwfBZgbm0VZfHM="
+        "CodeSha256": "sTyuibJrg4Yf55FyIoHt09BloKURc/VGUAz1PA3qjFs="
       }
     },
-    "UsersDashlistLambdaVersionKk8QqkfUDpWknhvLIPqtAxgyWx2qt4HDCVW55x2nFuU": {
+    "UsersDashlistLambdaVersion79hSoR4ID0ZB5o0lgxGqrVxFBEGjFrcabuZh51dpY": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "UsersDashlistLambdaFunction"
         },
-        "CodeSha256": "vEbeiWBq12voWdkmIIBnInGavH41ljwfBZgbm0VZfHM="
+        "CodeSha256": "sTyuibJrg4Yf55FyIoHt09BloKURc/VGUAz1PA3qjFs="
       }
     },
-    "ParticipantsDashcreateLambdaVersion4CS44F3oDuGtDMYdvlLAIP5PcK1yo064bzrsYA0I2k": {
+    "ParticipantsDashcreateLambdaVersionwhlZXJdr1AjJZCg65x9ZWgyKz5l7FLmMua3ialSs": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "ParticipantsDashcreateLambdaFunction"
         },
-        "CodeSha256": "vEbeiWBq12voWdkmIIBnInGavH41ljwfBZgbm0VZfHM="
+        "CodeSha256": "sTyuibJrg4Yf55FyIoHt09BloKURc/VGUAz1PA3qjFs="
       }
     },
-    "ParticipantsDashupdateLambdaVersionuSd9bIhIfPW1iPtPGzyY9DfAU6HRCjuZJQ9odEGK6wE": {
+    "ParticipantsDashupdateLambdaVersionoXYRiIc3xyqkmnQfHsp8iOOqrKeHJH5eKygbq3Jsks": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "ParticipantsDashupdateLambdaFunction"
         },
-        "CodeSha256": "vEbeiWBq12voWdkmIIBnInGavH41ljwfBZgbm0VZfHM="
+        "CodeSha256": "sTyuibJrg4Yf55FyIoHt09BloKURc/VGUAz1PA3qjFs="
       }
     },
-    "ParticipantsDashgetLambdaVersion6VbztDyaDLDSR9UsQb24KMbiJoQG5QaeRnjWgcvN0": {
+    "ParticipantsDashgetLambdaVersionRX01Lj7lpP2lOXjeYfl7nenvmNzJyg31Mq9tbQZkY": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "ParticipantsDashgetLambdaFunction"
         },
-        "CodeSha256": "vEbeiWBq12voWdkmIIBnInGavH41ljwfBZgbm0VZfHM="
+        "CodeSha256": "sTyuibJrg4Yf55FyIoHt09BloKURc/VGUAz1PA3qjFs="
       }
     },
-    "ParticipantsDashdeleteLambdaVersion1kOlqspBwi1KEuI3GVDpZswaHPufK9t2HlIrOFE7E": {
+    "ParticipantsDashdeleteLambdaVersionzyVP7vTDHNyOecRHUuu4Qrk1pDGq8BIslx6ymz8AvVk": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "ParticipantsDashdeleteLambdaFunction"
         },
-        "CodeSha256": "vEbeiWBq12voWdkmIIBnInGavH41ljwfBZgbm0VZfHM="
+        "CodeSha256": "sTyuibJrg4Yf55FyIoHt09BloKURc/VGUAz1PA3qjFs="
       }
     },
-    "ParticipantsDashlistLambdaVersion0y0GLZGbCIoNrVyskenkE7gVprG3LAjLF6rbC9UDsY": {
+    "ParticipantsDashlistLambdaVersionCSuY4SRNqzgPAzHdiOo7ddQKSRCiFyFvsQV7GnVves": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "ParticipantsDashlistLambdaFunction"
         },
-        "CodeSha256": "vEbeiWBq12voWdkmIIBnInGavH41ljwfBZgbm0VZfHM="
+        "CodeSha256": "sTyuibJrg4Yf55FyIoHt09BloKURc/VGUAz1PA3qjFs="
+      }
+    },
+    "ParticipantsDashvoteLambdaVersion8h9FjDlqa6dksAIUp3OMS3lLkogYkdvOG3WOcc3WY": {
+      "Type": "AWS::Lambda::Version",
+      "DeletionPolicy": "Retain",
+      "Properties": {
+        "FunctionName": {
+          "Ref": "ParticipantsDashvoteLambdaFunction"
+        },
+        "CodeSha256": "sTyuibJrg4Yf55FyIoHt09BloKURc/VGUAz1PA3qjFs="
       }
     },
     "ApiGatewayRestApi": {
@@ -787,6 +842,18 @@
           "Ref": "ApiGatewayResourceParticipants"
         },
         "PathPart": "{code}",
+        "RestApiId": {
+          "Ref": "ApiGatewayRestApi"
+        }
+      }
+    },
+    "ApiGatewayResourceParticipantsCodeVarVote": {
+      "Type": "AWS::ApiGateway::Resource",
+      "Properties": {
+        "ParentId": {
+          "Ref": "ApiGatewayResourceParticipantsCodeVar"
+        },
+        "PathPart": "vote",
         "RestApiId": {
           "Ref": "ApiGatewayRestApi"
         }
@@ -1252,7 +1319,53 @@
         "ParticipantsDashlistLambdaPermissionApiGateway"
       ]
     },
-    "ApiGatewayDeployment1678026666582": {
+    "ApiGatewayMethodParticipantsCodeVarVotePatch": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "HttpMethod": "PATCH",
+        "RequestParameters": {},
+        "ResourceId": {
+          "Ref": "ApiGatewayResourceParticipantsCodeVarVote"
+        },
+        "RestApiId": {
+          "Ref": "ApiGatewayRestApi"
+        },
+        "ApiKeyRequired": false,
+        "AuthorizationType": "NONE",
+        "Integration": {
+          "IntegrationHttpMethod": "POST",
+          "Type": "AWS_PROXY",
+          "Uri": {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition"
+                },
+                ":apigateway:",
+                {
+                  "Ref": "AWS::Region"
+                },
+                ":lambda:path/2015-03-31/functions/",
+                {
+                  "Fn::GetAtt": [
+                    "ParticipantsDashvoteLambdaFunction",
+                    "Arn"
+                  ]
+                },
+                "/invocations"
+              ]
+            ]
+          }
+        },
+        "MethodResponses": []
+      },
+      "DependsOn": [
+        "ParticipantsDashvoteLambdaPermissionApiGateway"
+      ]
+    },
+    "ApiGatewayDeployment1678032068735": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -1270,7 +1383,8 @@
         "ApiGatewayMethodParticipantsCodeVarPut",
         "ApiGatewayMethodParticipantsCodeVarGet",
         "ApiGatewayMethodParticipantsCodeVarDelete",
-        "ApiGatewayMethodParticipantsGet"
+        "ApiGatewayMethodParticipantsGet",
+        "ApiGatewayMethodParticipantsCodeVarVotePatch"
       ]
     },
     "UsersDashcreateLambdaPermissionApiGateway": {
@@ -1643,6 +1757,43 @@
         }
       }
     },
+    "ParticipantsDashvoteLambdaPermissionApiGateway": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "ParticipantsDashvoteLambdaFunction",
+            "Arn"
+          ]
+        },
+        "Action": "lambda:InvokeFunction",
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition"
+              },
+              ":execute-api:",
+              {
+                "Ref": "AWS::Region"
+              },
+              ":",
+              {
+                "Ref": "AWS::AccountId"
+              },
+              ":",
+              {
+                "Ref": "ApiGatewayRestApi"
+              },
+              "/*/*"
+            ]
+          ]
+        }
+      }
+    },
     "UsersDynamoDbTable": {
       "Type": "AWS::DynamoDB::Table",
       "DeletionPolicy": "Retain",
@@ -1671,6 +1822,10 @@
           {
             "AttributeName": "code",
             "AttributeType": "S"
+          },
+          {
+            "AttributeName": "votes",
+            "AttributeType": "N"
           }
         ],
         "KeySchema": [
@@ -1680,6 +1835,24 @@
           }
         ],
         "BillingMode": "PAY_PER_REQUEST",
+        "GlobalSecondaryIndexes": [
+          {
+            "IndexName": "votes-index",
+            "KeySchema": [
+              {
+                "AttributeName": "code",
+                "KeyType": "HASH"
+              },
+              {
+                "AttributeName": "votes",
+                "KeyType": "RANGE"
+              }
+            ],
+            "Projection": {
+              "ProjectionType": "ALL"
+            }
+          }
+        ],
         "TableName": "dev-participants"
       }
     }
@@ -1696,7 +1869,7 @@
     "UsersDashcreateLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "UsersDashcreateLambdaVersionfNPSiRaU5H6UWblxWTA9ztW44Dghe8O9ggUYId6y6I"
+        "Ref": "UsersDashcreateLambdaVersionLbtNq1pik6AZRJCg5EGjTF0zVNssy4VE27aJKxl2k"
       },
       "Export": {
         "Name": "sls-serverless-reality-tv-voting-dev-UsersDashcreateLambdaFunctionQualifiedArn"
@@ -1705,7 +1878,7 @@
     "UsersDashupdateLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "UsersDashupdateLambdaVersionX4DDC0LrfqHtLxkHMcljPsmdOip7NVlNhA16aPjDqFM"
+        "Ref": "UsersDashupdateLambdaVersionmbOEYBRjFhVWjzzz1FI9kyb7rKvArYuPnjH3YrnA4"
       },
       "Export": {
         "Name": "sls-serverless-reality-tv-voting-dev-UsersDashupdateLambdaFunctionQualifiedArn"
@@ -1714,7 +1887,7 @@
     "UsersDashgetLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "UsersDashgetLambdaVersionG1oYTDGaeWzNX0rT6bwDggVt9lxMGLp4a0jH19gMqsA"
+        "Ref": "UsersDashgetLambdaVersion6eXdV2eAu1MVQjDt9TDpnhkYZYMcKxhtwhq6r2FIhc"
       },
       "Export": {
         "Name": "sls-serverless-reality-tv-voting-dev-UsersDashgetLambdaFunctionQualifiedArn"
@@ -1723,7 +1896,7 @@
     "UsersDashdeleteLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "UsersDashdeleteLambdaVersionWTtWsnooPcyR3cSVPnabQTwqErLOi9gwYHuP2c1Yg"
+        "Ref": "UsersDashdeleteLambdaVersionRvci3tnQju0sVHOtIGR6Dw4G8P7iASGgy2xGIYGFpwY"
       },
       "Export": {
         "Name": "sls-serverless-reality-tv-voting-dev-UsersDashdeleteLambdaFunctionQualifiedArn"
@@ -1732,7 +1905,7 @@
     "UsersDashlistLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "UsersDashlistLambdaVersionKk8QqkfUDpWknhvLIPqtAxgyWx2qt4HDCVW55x2nFuU"
+        "Ref": "UsersDashlistLambdaVersion79hSoR4ID0ZB5o0lgxGqrVxFBEGjFrcabuZh51dpY"
       },
       "Export": {
         "Name": "sls-serverless-reality-tv-voting-dev-UsersDashlistLambdaFunctionQualifiedArn"
@@ -1741,7 +1914,7 @@
     "ParticipantsDashcreateLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "ParticipantsDashcreateLambdaVersion4CS44F3oDuGtDMYdvlLAIP5PcK1yo064bzrsYA0I2k"
+        "Ref": "ParticipantsDashcreateLambdaVersionwhlZXJdr1AjJZCg65x9ZWgyKz5l7FLmMua3ialSs"
       },
       "Export": {
         "Name": "sls-serverless-reality-tv-voting-dev-ParticipantsDashcreateLambdaFunctionQualifiedArn"
@@ -1750,7 +1923,7 @@
     "ParticipantsDashupdateLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "ParticipantsDashupdateLambdaVersionuSd9bIhIfPW1iPtPGzyY9DfAU6HRCjuZJQ9odEGK6wE"
+        "Ref": "ParticipantsDashupdateLambdaVersionoXYRiIc3xyqkmnQfHsp8iOOqrKeHJH5eKygbq3Jsks"
       },
       "Export": {
         "Name": "sls-serverless-reality-tv-voting-dev-ParticipantsDashupdateLambdaFunctionQualifiedArn"
@@ -1759,7 +1932,7 @@
     "ParticipantsDashgetLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "ParticipantsDashgetLambdaVersion6VbztDyaDLDSR9UsQb24KMbiJoQG5QaeRnjWgcvN0"
+        "Ref": "ParticipantsDashgetLambdaVersionRX01Lj7lpP2lOXjeYfl7nenvmNzJyg31Mq9tbQZkY"
       },
       "Export": {
         "Name": "sls-serverless-reality-tv-voting-dev-ParticipantsDashgetLambdaFunctionQualifiedArn"
@@ -1768,7 +1941,7 @@
     "ParticipantsDashdeleteLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "ParticipantsDashdeleteLambdaVersion1kOlqspBwi1KEuI3GVDpZswaHPufK9t2HlIrOFE7E"
+        "Ref": "ParticipantsDashdeleteLambdaVersionzyVP7vTDHNyOecRHUuu4Qrk1pDGq8BIslx6ymz8AvVk"
       },
       "Export": {
         "Name": "sls-serverless-reality-tv-voting-dev-ParticipantsDashdeleteLambdaFunctionQualifiedArn"
@@ -1777,10 +1950,19 @@
     "ParticipantsDashlistLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "ParticipantsDashlistLambdaVersion0y0GLZGbCIoNrVyskenkE7gVprG3LAjLF6rbC9UDsY"
+        "Ref": "ParticipantsDashlistLambdaVersionCSuY4SRNqzgPAzHdiOo7ddQKSRCiFyFvsQV7GnVves"
       },
       "Export": {
         "Name": "sls-serverless-reality-tv-voting-dev-ParticipantsDashlistLambdaFunctionQualifiedArn"
+      }
+    },
+    "ParticipantsDashvoteLambdaFunctionQualifiedArn": {
+      "Description": "Current Lambda function version",
+      "Value": {
+        "Ref": "ParticipantsDashvoteLambdaVersion8h9FjDlqa6dksAIUp3OMS3lLkogYkdvOG3WOcc3WY"
+      },
+      "Export": {
+        "Name": "sls-serverless-reality-tv-voting-dev-ParticipantsDashvoteLambdaFunctionQualifiedArn"
       }
     },
     "ServiceEndpoint": {

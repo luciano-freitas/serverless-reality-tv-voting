@@ -42,7 +42,30 @@ const UserRepository = {
     }
 
     return CoreRepository.update(TABLE, structure);
-  }
+  },
+
+  async updateParticipant(keys, item) {
+    const structure = {
+      Key: {
+        documentNumber: keys.documentNumber,
+      },
+      ExpressionAttributeNames: {
+        '#participant': 'participant',
+        '#updatedAt': 'updatedAt',
+      },
+      ExpressionAttributeValues: {
+        ':participant': item.participant,
+        ':updatedAt': Date.now(),
+      },
+      UpdateExpression: 'SET #participant = :participant, #updatedAt = :updatedAt',
+    }
+
+    return CoreRepository.update(TABLE, structure);
+  },
+
+  put(item) {
+    return CoreRepository.put(TABLE, item);
+  },
 
 }
 

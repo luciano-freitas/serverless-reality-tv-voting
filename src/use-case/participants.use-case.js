@@ -2,22 +2,22 @@ const { ParticipantRepository } = require('../repositories');
 
 const ParticipantsUseCase = {
 
-  async create(data) {
+  create(data) {
     const { code, name } = data;
     const item = {
       code,
-      name
+      name,
+      votes: 0
     };
 
     return ParticipantRepository.create(item);
   },
 
-  async update(keys, data) {
-    const { name, votes } = data;
+  update(keys, data) {
+    const { name } = data;
 
     const item = {
       name,
-      votes
     };
 
     return ParticipantRepository.update(keys, item);

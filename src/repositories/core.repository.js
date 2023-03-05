@@ -54,7 +54,22 @@ const CoreRepository = {
     };
 
     return Ddb.ddbClient.update(params).promise().then(({ Attributes }) => Attributes);
-  }
+  },
+
+  put(table, item) {
+    const timestamp = new Date().getTime();
+    const data = {
+      ...item,
+      updatedAt: timestamp,
+    };
+
+    const params = {
+      TableName: table,
+      Item: data
+    };
+
+    return Ddb.ddbClient.put(params).promise().then(() => data);
+  },
 }
 
 module.exports = CoreRepository;

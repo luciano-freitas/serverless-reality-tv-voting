@@ -39,6 +39,14 @@ functions:
           path: /users
           method: get
 
+  users-vote:
+    handler: src/lambdas/users/vote.handler
+    lambdaInsights: true
+    events:
+      - http:
+          path: /users/{documentNumber}/vote/{participant}
+          method: patch
+
   participants-create:
     handler: src/lambdas/participants/create.handler
     lambdaInsights: true

@@ -5,7 +5,7 @@ const ddb = new AWS.DynamoDB({
   endpoint: process.env.DYNAMODB_ENDPOINT
 });
 
-var ddbClient = new AWS.DynamoDB.DocumentClient({ 
+var ddbClient = new AWS.DynamoDB.DocumentClient({
   service: ddb,
 });
 
@@ -13,4 +13,4 @@ function unmarshall(data) {
   return AWS.DynamoDB.Converter.unmarshall(data);
 }
 
-module.exports = { ddbClient, unmarshall };
+module.exports = { ddb, ddbClient, unmarshall };
