@@ -1,0 +1,34 @@
+provider:
+  name: aws
+  runtime: nodejs18.x
+  architecture: arm64
+  memorySize: 128
+  timeout: 30
+  environment:
+    DYNAMODB_ENDPOINT: https://dynamodb.us-east-1.amazonaws.com
+    DYNAMODB_TABLE_USERS: ${sls:stage}-users
+    DYNAMODB_TABLE_PARTICIPANTS: ${sls:stage}-participants
+    API_ZIPCODE_VIACEP_ENDPOINT: https://viacep.com.br/ws
+  httpApi:
+    cors: true
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - dynamodb:Query
+            - dynamodb:Scan
+            - dynamodb:GetItem
+            - dynamodb:PutItem
+            - dynamodb:UpdateItem
+            - dynamodb:DeleteItem
+          Resource: "arn:aws:dynamodb:${aws:region}:*:table/${self:provider.environment.DYNAMODB_TABLE_USERS}"
+        - Effect: Allow
+          Action:
+            - dynamodb:Query
+            - dynamodb:Scan
+            - dynamodb:GetItem
+            - dynamodb:PutItem
+            - dynamodb:UpdateItem
+            - dynamodb:DeleteItem
+          Resource: "arn:aws:dynamodb:${aws:region}:*:table/${self:provider.environment.DYNAMODB_TABLE_PARTICIPANTS}"

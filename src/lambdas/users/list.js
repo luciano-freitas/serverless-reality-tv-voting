@@ -6,7 +6,7 @@ const { UsersUseCase } = require('../../use-case');
 module.exports.handler = async (event, context, callback) => {
   if (!event?.queryStringParameters) {
     return ResponseHttp.reply({
-      message: 'Params [documentNumber] is required',
+      message: 'Params [queryStringParameters] is required',
     }, 400)
   }
 

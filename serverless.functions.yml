@@ -1,0 +1,80 @@
+functions:
+  users-create:
+    handler: src/lambdas/users/create.handler
+    lambdaInsights: true
+    events:
+      - http:
+          path: /users
+          method: post
+
+  users-update:
+    handler: src/lambdas/users/update.handler
+    lambdaInsights: true
+    events:
+      - http:
+          path: /users/{documentNumber}
+          method: put
+
+  users-get:
+    handler: src/lambdas/users/get.handler
+    lambdaInsights: true
+    events:
+      - http:
+          path: /users/{documentNumber}
+          method: get
+
+  users-delete:
+    handler: src/lambdas/users/delete.handler
+    lambdaInsights: true
+    events:
+      - http:
+          path: /users/{documentNumber}
+          method: delete
+
+  users-list:
+    handler: src/lambdas/users/list.handler
+    lambdaInsights: true
+    events:
+      - http:
+          path: /users
+          method: get
+
+  participants-create:
+    handler: src/lambdas/participants/create.handler
+    lambdaInsights: true
+    events:
+      - http:
+          path: /participants
+          method: post
+
+  participants-update:
+    handler: src/lambdas/participants/update.handler
+    lambdaInsights: true
+    events:
+      - http:
+          path: /participants/{code}
+          method: put
+
+  participants-get:
+    handler: src/lambdas/participants/get.handler
+    lambdaInsights: true
+    events:
+      - http:
+          path: /participants/{code}
+          method: get
+
+  participants-delete:
+    handler: src/lambdas/participants/delete.handler
+    lambdaInsights: true
+    events:
+      - http:
+          path: /participants/{code}
+          method: delete
+
+  participants-list:
+    handler: src/lambdas/participants/list.handler
+    lambdaInsights: true
+    events:
+      - http:
+          path: /participants
+          method: get
