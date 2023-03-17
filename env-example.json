@@ -1,0 +1,8 @@
+{
+  "DYNAMODB_ENDPOINT": "https://dynamodb.us-east-1.amazonaws.com",
+  "DYNAMODB_TABLE_USERS": "dev-users",
+  "DYNAMODB_TABLE_PARTICIPANTS": "dev-participants",
+  "API_ZIPCODE_VIACEP_ENDPOINT": "https://viacep.com.br/ws",
+  "NEW_RELIC_ACCOUNT_ID": "xxxxx",
+  "NEW_RELIC_API_KEY": "xxxxx"
+}

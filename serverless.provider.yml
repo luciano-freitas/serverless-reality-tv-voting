@@ -7,11 +7,8 @@ provider:
   apiGateway:
     apiKeys:
       - api-key-serverless-reality-tv-voting
-  environment:
-    DYNAMODB_ENDPOINT: https://dynamodb.us-east-1.amazonaws.com
-    DYNAMODB_TABLE_USERS: ${sls:stage}-users
-    DYNAMODB_TABLE_PARTICIPANTS: ${sls:stage}-participants
-    API_ZIPCODE_VIACEP_ENDPOINT: https://viacep.com.br/ws
+  environment: ${file(env.json)}
+
   httpApi:
     cors: true
   iam:

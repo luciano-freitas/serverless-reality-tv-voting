@@ -4,7 +4,19 @@ frameworkVersion: '3'
 plugins:
   - serverless-prune-plugin
   - serverless-plugin-lambda-insights
+  - serverless-newrelic-lambda-layers
+  - serverless-dotenv-plugin
   - serverless-offline #needs to be last in the list
+
+custom:
+  newRelic:
+    accountId: ${self:provider.environment.NEW_RELIC_ACCOUNT_ID}
+    apiKey: ${self:provider.environment.NEW_RELIC_API_KEY}
+    debug: true
+    enableExtension: true
+    enableFunctionLogs: true
+    enableIntegration: true
+    logLevel: debug
 
 provider:
   ${file(./serverless.provider.yml):provider}
