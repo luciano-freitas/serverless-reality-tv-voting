@@ -4,13 +4,10 @@ const { ResponseHttp } = require('../../utils');
 const { ParticipantsUseCase } = require('../../use-case');
 
 module.exports.handler = async (event, context, callback) => {
-  if (!event?.queryStringParameters) {
-    return ResponseHttp.reply({
-      message: 'Params [queryStringParameters] is required',
-    }, 400)
-  }
-
-  const { limit, startKey } = event.queryStringParameters;
+  const query = event.queryStringParameters;
+  const limit = query?.limit || 20;
+  const startKey = query?.startKey || null;
+  
   const result = await ParticipantsUseCase.list({
     limit,
     startKey: startKey && JSON.parse(startKey)

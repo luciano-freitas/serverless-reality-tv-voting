@@ -1,5 +1,9 @@
 const { ViaCepIntegration } = require('../integrations');
 const { UserRepository, ParticipantRepository } = require('../repositories');
+const OPERATION = Object.freeze({
+  SUM: "+",
+  SUB: "-"
+});
 
 const UsersUseCase = {
 
@@ -64,13 +68,13 @@ const UsersUseCase = {
       if (userBefore?.participant && userBefore?.participant != participant)
         return Promise.all([
           UserRepository.updateParticipant({ documentNumber }, { participant }),
-          ParticipantRepository.votes({ code: participant }, '+'),
-          ParticipantRepository.votes({ code: userBefore.participant }, '-')
+          ParticipantRepository.votes({ code: participant }, OPERATION.SUM),
+          ParticipantRepository.votes({ code: userBefore.participant }, OPERATION.SUB)
         ]);
 
       return Promise.all([
         UserRepository.updateParticipant({ documentNumber }, { participant }),
-        ParticipantRepository.votes({ code: participant }, '+'),
+        ParticipantRepository.votes({ code: participant }, OPERATION.SUM),
       ]);
     })();
 
