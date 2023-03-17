@@ -6,7 +6,7 @@ provider:
   timeout: 30
   apiGateway:
     apiKeys:
-      - user1
+      - api-key-serverless-reality-tv-voting
   environment:
     DYNAMODB_ENDPOINT: https://dynamodb.us-east-1.amazonaws.com
     DYNAMODB_TABLE_USERS: ${sls:stage}-users
