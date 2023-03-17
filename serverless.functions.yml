@@ -6,6 +6,7 @@ functions:
       - http:
           path: /users
           method: post
+          private: true
 
   users-update:
     handler: src/lambdas/users/update.handler
@@ -14,6 +15,7 @@ functions:
       - http:
           path: /users/{documentNumber}
           method: put
+          private: true
 
   users-get:
     handler: src/lambdas/users/get.handler
@@ -22,6 +24,7 @@ functions:
       - http:
           path: /users/{documentNumber}
           method: get
+          private: true
 
   users-delete:
     handler: src/lambdas/users/delete.handler
@@ -30,6 +33,7 @@ functions:
       - http:
           path: /users/{documentNumber}
           method: delete
+          private: true
 
   users-list:
     handler: src/lambdas/users/list.handler
@@ -38,6 +42,7 @@ functions:
       - http:
           path: /users
           method: get
+          private: true
 
   users-vote:
     handler: src/lambdas/users/vote.handler
@@ -46,6 +51,7 @@ functions:
       - http:
           path: /users/{documentNumber}/vote/{participant}
           method: patch
+          private: true
 
   participants-create:
     handler: src/lambdas/participants/create.handler
@@ -54,6 +60,7 @@ functions:
       - http:
           path: /participants
           method: post
+          private: true
 
   participants-update:
     handler: src/lambdas/participants/update.handler
@@ -62,6 +69,7 @@ functions:
       - http:
           path: /participants/{code}
           method: put
+          private: true
 
   participants-get:
     handler: src/lambdas/participants/get.handler
@@ -70,6 +78,7 @@ functions:
       - http:
           path: /participants/{code}
           method: get
+          private: true
 
   participants-delete:
     handler: src/lambdas/participants/delete.handler
@@ -78,6 +87,7 @@ functions:
       - http:
           path: /participants/{code}
           method: delete
+          private: true
 
   participants-list:
     handler: src/lambdas/participants/list.handler
@@ -86,3 +96,4 @@ functions:
       - http:
           path: /participants
           method: get
+          private: true

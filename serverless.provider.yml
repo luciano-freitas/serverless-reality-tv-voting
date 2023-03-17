@@ -4,6 +4,9 @@ provider:
   architecture: arm64
   memorySize: 128
   timeout: 30
+  apiGateway:
+    apiKeys:
+      - user1
   environment:
     DYNAMODB_ENDPOINT: https://dynamodb.us-east-1.amazonaws.com
     DYNAMODB_TABLE_USERS: ${sls:stage}-users
