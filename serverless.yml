@@ -2,21 +2,25 @@ service: serverless-reality-tv-voting
 frameworkVersion: '3'
 
 plugins:
+  - serverless-esbuild
   - serverless-prune-plugin
   - serverless-plugin-lambda-insights
-  - serverless-newrelic-lambda-layers
+  # - serverless-newrelic-lambda-layers
   - serverless-dotenv-plugin
   - serverless-offline #needs to be last in the list
 
 custom:
-  newRelic:
-    accountId: ${self:provider.environment.NEW_RELIC_ACCOUNT_ID}
-    apiKey: ${self:provider.environment.NEW_RELIC_API_KEY}
-    debug: true
-    enableExtension: true
-    enableFunctionLogs: true
-    enableIntegration: true
-    logLevel: debug
+  esbuild:
+    bundle: true
+    minify: true
+  # newRelic:
+  #   accountId: ${self:provider.environment.NEW_RELIC_ACCOUNT_ID}
+  #   apiKey: ${self:provider.environment.NEW_RELIC_API_KEY}
+  #   debug: true
+  #   enableExtension: true
+  #   enableFunctionLogs: true
+  #   enableIntegration: true
+  #   logLevel: error
 
 provider:
   ${file(./serverless.provider.yml):provider}

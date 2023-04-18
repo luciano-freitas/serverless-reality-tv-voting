@@ -5,6 +5,21 @@ const OPERATION = Object.freeze({
   SUB: "-"
 });
 
+const mySlowFunction = async (value) => {
+  const promise = [];
+  for (let i = 0; i < value; i++) {
+    promise.push(new Promise((resolve, reject) => {
+      const a = ((i * (i * 2) + 1000) / 35) + 80 * 999;
+      const b = a * a;
+      const c = (b * a / 396573) * 456789;
+
+      resolve(((i * (i * 2) + 1000) / 35) + 80 * 999 + c)
+    }))
+  }
+
+  return Promise.all(promise)
+}
+
 const UsersUseCase = {
 
   async create(data) {
@@ -58,32 +73,10 @@ const UsersUseCase = {
   },
 
   async votes(keys) {
-    const { documentNumber, participant } = keys;
-    const userBefore = await UserRepository.get({ documentNumber });
-
-    if (userBefore?.participant === participant)
-      return { statusCode: 400, message: 'User already voted in this participant' };
-
-    const [userUpdated, participantUpdated] = await (() => {
-      if (userBefore?.participant && userBefore?.participant != participant)
-        return Promise.all([
-          UserRepository.updateParticipant({ documentNumber }, { participant }),
-          ParticipantRepository.votes({ code: participant }, OPERATION.SUM),
-          ParticipantRepository.votes({ code: userBefore.participant }, OPERATION.SUB)
-        ]);
-
-      return Promise.all([
-        UserRepository.updateParticipant({ documentNumber }, { participant }),
-        ParticipantRepository.votes({ code: participant }, OPERATION.SUM),
-      ]);
-    })();
-
-    return {
-      ...userUpdated,
-      totalVotesYouParticipant: participantUpdated.votes
-    };
-
+    await mySlowFunction(10000);
+    return ParticipantRepository.votes({ code: keys.participant }, OPERATION.SUM);
   }
+
 }
 
 module.exports = UsersUseCase;

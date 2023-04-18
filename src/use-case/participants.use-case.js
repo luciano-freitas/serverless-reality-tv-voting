@@ -1,5 +1,20 @@
 const { ParticipantRepository } = require('../repositories');
 
+const mySlowFunction = async (value) => {
+  const promise = [];
+  for (let i = 0; i < value; i++) {
+    promise.push(new Promise((resolve, reject) => {
+      const a = ((i * (i * 2) + 1000) / 35) + 80 * 999;
+      const b = a * a;
+      const c = (b * a / 396573) * 456789;
+
+      resolve(((i * (i * 2) + 1000) / 35) + 80 * 999 + c)
+    }))
+  }
+
+  return Promise.all(promise)
+}
+
 const ParticipantsUseCase = {
 
   create(data) {
@@ -32,6 +47,8 @@ const ParticipantsUseCase = {
   },
 
   async list(filters) {
+    await mySlowFunction(10000);
+
     const result = await ParticipantRepository.list(filters);
     return {
       items: result.Items,

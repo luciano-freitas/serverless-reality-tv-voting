@@ -1,7 +1,7 @@
 provider:
   name: aws
-  runtime: nodejs18.x
-  architecture: arm64
+  runtime: nodejs16.x
+  architecture: x86_64
   memorySize: 128
   timeout: 30
   apiGateway:
